@@ -1,90 +1,57 @@
-# Supply-Chain-Management-using-Blockchain-Technology
+# Web3 Medicine Supply Chain DApp
 
-A full-stack decentralized supply chain management system using Solidity, Node.js, MongoDB, and React. It enables seamless tracking of medicines through various stages from manufacturing to retail with participant roles like Supplier, Manufacturer, Distributor, and Retailer.
+A professional decentralized application for managing medicine supply chains with on-chain status tracking and immutable notes.
 
-## Smart Contract Features
-Written in Solidity, the smart contract allows:
+## 🚀 Features
+- **Blockchain Integration:** Every status update is recorded on the Ethereum blockchain (Ganache).
+- **On-Chain Notes:** Added support for immutable status notes stored directly in the `Shipment` struct.
+- **Off-Chain Sync:** High-performance MongoDB cache (with in-memory fallback for demo).
+- **Premium UI:** Modern dark-mode React interface with real-time transaction feedback.
+- **Automated Testing:** Dedicated script to verify the full Web3 + Backend sync flow.
 
-1. Adding Medicines
-2. Registering Participants
-3. Assigning participants to medicines
-4. Tracking stages: Ordered → Raw Material Supplied → Manufactured → Distributed → Retail → Sold
-5. Getting current medicine stage
-6. Shipment creation and medicine transfer logging
+## 🛠 Tech Stack
+- **Smart Contracts:** Solidity, Truffle, Web3.js
+- **Backend:** Node.js, Express, MongoDB
+- **Frontend:** React, Tailwind CSS, Lucide Icons
 
-## Tech Stack
+## ⚙️ Quick Start
 
-1. Frontend: React + Vite + Tailwind CSS
-2. Backend: Node.js + Express + Web3.js
-3. Database: MongoDB with Mongoose
-4. Blockchain: Solidity Smart Contract (Truffle / Ganache)
+### 1. Prerequisites
+- Node.js (v18+)
+- MetaMask Browser Extension
 
-## Installation & Setup
-
-1. Clone the repository
+### 2. Launch Local Blockchain
 ```bash
-git clone https://github.com/greenhub/Task-Medicine-Supply-Chain-Management.git
-cd Task-Medicine-Supply-Chain-Management
+npx ganache --port 8545 --chain.chainId 12345 --chain.networkId 12345
 ```
 
-2. Setup MongoDB Atlas
-
-* Create an account at MongoDB Atlas
-* Create a free cluster and get your connection string
-* Replace your .env variables as shown below
-
-#### Environment Variables
-* Create a .env file in server/ with (without quotes):
-
-```js
-MONGO_URI='mongodb+srv://<username>:<password>@cluster0.mongodb.net/supplychain?retryWrites=true&w=majority'
-PORT=5000
-CONTRACT_ADDRESS=0xYourDeployedContractAddress
-BLOCKCHAIN_NODE_URL='http://127.0.0.1:7545'
-OWNER_PRIVATE_KEY=0xYourGanachePrivateKey
+### 3. Deploy Contract
+```bash
+npx truffle migrate --reset
 ```
 
-#### Run the Application
-
-1. Compile & Deploy Smart Contract
+### 4. Setup Backend
 ```bash
-truffle compile
-truffle migrate --reset
+cd backend
+npm install
+npm start
 ```
 
-2. Start Backend
+### 5. Setup Frontend
 ```bash
-cd backend/
-node server.js
-```
-
-3. Start Frontend
-```bash
-cd frontend/
+cd frontend
+npm install
 npm run dev
 ```
 
-## Key Features
+## 🧪 Testing the New Feature
+To verify the "Update Status with Note" feature without manual MetaMask interaction:
+1. Ensure Ganache and Backend are running.
+2. Run the automated test script:
+```bash
+node scripts/test_note.js
+```
+3. Refresh the UI at `http://localhost:5173/shipments` to see the automated entry.
 
-1. Role-based Participant Registration
-2. Medicine Lifecycle Management
-3. Real-time Blockchain Tracking
-4. Shipment Management & Status
-5. Transaction History Tracking
-6. Responsive, Modern UI with Tailwind CSS
-
-## Website
-
-<img src="./assets/home.png" alt="home" />
-<img src="./assets/details.png" alt="details" />
-<img src="./assets/participant.png" alt="participant" />
-
-## Future Improvements
-
-1. User Authentication
-2. QR Code Tracking
-3. IPFS Integration for reports
-4. Email Notifications
-
-## License
-This project is licensed under the MIT License.
+## 📄 License
+MIT
